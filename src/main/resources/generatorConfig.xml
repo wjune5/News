@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                        connectionURL="jdbc:sqlserver://localhost:1433;DatabaseName=news"
+                        userId="sa"
+                        password="1785qweasd">
+						<property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 对应生成的pojo所在包 -->
+        <javaModelGenerator targetPackage="com.fan.news.pojo" targetProject="src/main/java"/>
+
+        <!-- 对应生成的mapper所在目录 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- 配置mapper对应的java映射 -->
+        <javaClientGenerator targetPackage="com.fan.news.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <table tableName="news_img" domainObjectName="NewsImg"></table>
+
+    </context>
+</generatorConfiguration>

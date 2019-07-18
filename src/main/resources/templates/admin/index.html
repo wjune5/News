@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>后台登录</title>
+    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/static/css/a3common.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/css/login.css}">
+    <link rel="stylesheet" th:href="@{/static/css/font_43459_lbtux0zjkr6yldi.css}">
+
+    <script type="text/javascript" th:src="@{/static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/admin/index.js}"></script>
+</head>
+
+<body>
+
+<div id="main" class="main-warp">
+    <div class="main-content">
+        <div class="formDiv">
+
+            <h2 class="text-center">登录</h2>
+            <div class="error-content" style="height: 15px;">
+                <span id="errMsg"></span>
+            </div>
+            <div class="dataform">
+                <div class="input-warp gap">
+                    <span class="input-icon iconfont icon-yonghu1"></span>
+                    <input id="userName" name="username" type="text" class="inputs" placeholder="用户名" maxlength="64">
+                </div>
+                <div class="error-content" style="height: 15px;">
+                    <span id="userNameErr"></span>
+                </div>
+
+                <div class="input-warp gap">
+                    <span class="input-icon iconfont icon-baomi"></span>
+                    <input class="inputs" type="password" name="password" placeholder="密码" id="pwd" maxlength="20">
+                </div>
+                <div class="error-content" style="height: 15px;">
+                    <span id="passwordErr" class="errMsg"></span>
+                </div>
+
+                <div class="btn-warp gap">
+                    <div class="text-center">
+                        <input type="hidden" value="jsform" id="_app"/>
+                        <button type="submit" id="btnLogin" class="btn btn-block lgbtn blue">登录</button>
+                    </div>
+                </div>
+                <!--<div class="gap">-->
+
+                    <!--<div class="pull-right" style="margin-top: 6px"><a href="javascript:;" class="link">忘记密码</a><span-->
+                            <!--class="split-space">|</span><a href="register.html" class="link">新用户注册</a></div>-->
+
+                    <!--&lt;!&ndash;&lt;!&ndash;<div class="pretty-box">&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<input type="checkbox" value="1" name="REMEMBER" id="remember" class="">&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<label for="remember" style="font-weight: normal" >记住我</label>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+                <!--</div>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

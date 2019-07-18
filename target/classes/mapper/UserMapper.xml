@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.news.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.fan.news.pojo.User">
+        <id column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="user_state" jdbcType="INTEGER" property="userState"/>
+        <result column="user_type" jdbcType="INTEGER" property="userType"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.fan.news.pojo.User">
+        UPDATE [dbo].[user]
+        <set>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="userState != null">
+                user_state = #{userState,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=BINARY},
+            </if>
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
+    <select id="login" parameterType="user" resultMap="BaseResultMap">
+       SELECT
+          *
+        FROM dbo.[user]
+        WHERE dbo.[user].user_name = #{userName} AND dbo.[user].password= #{password}
+    </select>
+
+    <sql id="Base_Column_List">
+    user_id, user_name, nickname, user_state, user_type, password, gender
+  </sql>
+    <sql id="Blob_Column_List">
+    create_time
+  </sql>
+
+    <!--<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List"/>-->
+        <!--,-->
+        <!--<include refid="Blob_Column_List"/>-->
+        <!--from user-->
+        <!--where user_id = #{userId,jdbcType=VARCHAR}-->
+    <!--</select>-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+
+    <insert id="insert" parameterType="com.fan.news.pojo.User">
+    insert into user (user_id, user_name, nickname, 
+      user_state, user_type, password, 
+      gender, create_time)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{userState,jdbcType=INTEGER}, #{userType,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{createTime,jdbcType=BINARY})
+  </insert>
+    <insert id="insertSelective" parameterType="com.fan.news.pojo.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="userState != null">
+                user_state,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="userState != null">
+                #{userState,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fan.news.pojo.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      user_state = #{userState,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BINARY}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.fan.news.pojo.User">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      user_state = #{userState,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

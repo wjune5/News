@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.news.mapper.NewsFileMapper">
+    <resultMap id="BaseMap" type="com.fan.news.pojo.NewsFile">
+        <id column="news_file_id" property="newsFileId"/>
+        <result property="newsId" column="news_id"/>
+        <result property="fileAddress" column="file_address"/>
+    </resultMap>
+    <resultMap id="NewsFileMap" type="com.fan.news.pojo.NewsFileDto">
+        <id column="news_file_id" property="newsFileId"/>
+        <result property="fileAddress" column="file_address"/>
+        <association property="news" javaType="com.fan.news.pojo.News" column="news_id">
+            <id column="news_id" property="newsId"/>
+            <result column="content" jdbcType="VARCHAR" property="content"/>
+            <result column="title" jdbcType="VARCHAR" property="title"/>
+            <result column="last_edit_time" property="lastEditTime"/>
+            <result column="create_time" property="createTime"/>
+            <result column="nickname" property="nickname"/>
+            <result column="introduction" property="introduction"/>
+        </association>
+    </resultMap>
+
+    <!--   SELECT n.*, file_address FROM news n LEFT JOIN news_file nf ON n.news_id = nf.news_id WHERE n.news_id =-->
+    <select id="getNewsAndFile" resultMap="NewsFileMap">
+        SELECT file_address, a.* FROM (SELECT * FROM news WHERE news_id = #{newsId}) a LEFT JOIN news_file  nf ON a.news_id = nf.news_id
+    </select>
+
+    <insert id="insert" parameterType="newsFile">
+        INSERT INTO news_file (news_file_id, news_id, file_address) VALUES (#{newsFileId}, #{newsId}, #{fileAddress})
+    </insert>
+</mapper>

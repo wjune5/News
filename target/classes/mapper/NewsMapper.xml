@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.news.mapper.NewsMapper">
+    <resultMap id="BaseResultMap" type="com.fan.news.pojo.News">
+        <id column="news_id" property="newsId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <result column="last_edit_time" property="lastEditTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="nickname" property="nickname"/>
+        <result column="introduction" property="introduction"/>
+    </resultMap>
+
+    <resultMap id="NewsResultMap" type="com.fan.news.pojo.News">
+        <id column="news_id" property="newsId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="last_edit_time" property="lastEditTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="nickname" property="nickname"/>
+        <result column="introduction" property="introduction"/>
+    </resultMap>
+
+    <delete id="deleteByPrimaryKey">
+        delete from news where news_id = #{newsId}
+    </delete>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.fan.news.pojo.News">
+        update news
+        <set>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction},
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="lastEditTime != null">
+                last_edit_time = #{lastEditTime},
+            </if>
+        </set>
+        where news_id = #{newsId}
+    </update>
+
+    <select id="getNewsByNewsId" resultMap="NewsResultMap">
+        SELECT * FROM news WHERE news_id = #{newsId}
+    </select>
+
+    <insert id="insert" parameterType="com.fan.news.pojo.News">
+        insert into news (news_id, content, title, user_id, last_edit_time, create_time, nickname, introduction)
+        values (#{newsId}, #{content}, #{title}, #{userId}, #{lastEditTime}, #{createTime}, #{nickname}, #{introduction})
+    </insert>
+
+
+    <sql id="Base_Column_List">
+      news_id, content, title, user_id
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="NewsResultMap">
+        select
+          news_id, content, title, nickname, last_edit_time, create_time
+        from news
+        where user_id=#{userId} ORDER BY last_edit_time DESC
+    </select>
+
+
+    <update id="updateByPrimaryKey" parameterType="com.fan.news.pojo.News">
+        update news
+        set content = #{content,jdbcType=VARCHAR},
+          title = #{title,jdbcType=VARCHAR},
+          user_id = #{userId,jdbcType=VARCHAR}
+        where news_id = #{newsId,jdbcType=INTEGER}
+  </update>
+    <insert id="insertSelective" parameterType="com.fan.news.pojo.News">
+        insert into news
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="newsId != null">
+                news_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="newsId != null">
+                #{newsId,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+
+</mapper>

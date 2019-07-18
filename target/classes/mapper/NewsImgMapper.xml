@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fan.news.mapper.NewsImgMapper">
+
+    <resultMap id="NewsImgBaseMap" type="com.fan.news.pojo.NewsImg">
+        <id column="news_img_id" property="newsImgId"/>
+        <result column="img_address" jdbcType="VARCHAR" property="imgAddress"/>
+        <result column="news_id" property="newsId"/>
+    </resultMap>
+
+    <resultMap id="NewsImgDtoMap" type="com.fan.news.pojo.NewsImgDto">
+        <id column="news_id" property="newsId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="last_edit_time" property="lastEditTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="nickname" property="nickname"/>
+        <collection property="newsImgList" column="news_img_id" javaType="com.fan.news.pojo.NewsImg">
+            <result column="img_address" jdbcType="VARCHAR" property="imgAddress"/>
+        </collection>
+    </resultMap>
+    <!--<association property="news" column="news_id" javaType="com.fan.news.pojo.News">-->
+    <!--<id column="news_id"/>-->
+    <!--<result column="content" jdbcType="VARCHAR" property="content"/>-->
+    <!--<result column="title" jdbcType="VARCHAR" property="title"/>-->
+    <!--<result column="last_edit_time" property="lastEditTime"/>-->
+    <!--<result column="create_time" property="createTime"/>-->
+    <!--<result column="nickname" property="nickname"/>-->
+    <!--</association>-->
+    <select id="getHotNews" resultMap="NewsImgDtoMap">
+        SELECT n.*, img_address FROM news n LEFT JOIN news_img ni ON n.news_id = ni.news_id ORDER BY last_edit_time DESC
+    </select>
+
+    <insert id="insertImg" parameterType="com.fan.news.pojo.NewsImg">
+        insert into news_img (news_img_id, img_address, news_id)
+        values (#{newsImgId}, #{imgAddress,jdbcType=VARCHAR}, #{newsId,jdbcType=VARCHAR})
+    </insert>
+
+    <sql id="Base_Column_List">
+    news_img_id, img_address, news_id
+  </sql>
+
+    <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select-->
+    <!--<include refid="Base_Column_List"/>-->
+    <!--from news_img-->
+    <!--where news_img_id = #{newsImgId,jdbcType=INTEGER}-->
+    <!--</select>-->
+    <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from news_img-->
+    <!--where news_img_id = #{newsImgId,jdbcType=INTEGER}-->
+    <!--</delete>-->
+
+    <insert id="insert" parameterType="com.fan.news.pojo.NewsImg">
+    insert into news_img (news_img_id, img_address, news_id
+      )
+    values (#{newsImgId,jdbcType=INTEGER}, #{imgAddress,jdbcType=VARCHAR}, #{newsId,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.fan.news.pojo.NewsImg">
+        insert into news_img
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="newsImgId != null">
+                news_img_id,
+            </if>
+            <if test="imgAddress != null">
+                img_address,
+            </if>
+            <if test="newsId != null">
+                news_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="newsImgId != null">
+                #{newsImgId,jdbcType=INTEGER},
+            </if>
+            <if test="imgAddress != null">
+                #{imgAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="newsId != null">
+                #{newsId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.fan.news.pojo.NewsImg">
+        update news_img
+        <set>
+            <if test="imgAddress != null">
+                img_address = #{imgAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="newsId != null">
+                news_id = #{newsId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where news_img_id = #{newsImgId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.fan.news.pojo.NewsImg">
+    update news_img
+    set img_address = #{imgAddress,jdbcType=VARCHAR},
+      news_id = #{newsId,jdbcType=VARCHAR}
+    where news_img_id = #{newsImgId,jdbcType=INTEGER}
+  </update>
+</mapper>

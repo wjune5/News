@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>新闻首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/static/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" th:href="@{/static/lib/layui/css/layui.css}">
+
+    <!-- js  -->
+    <script th:src="@{/static/js/jquery-2.1.1.min.js}"></script>
+    <script th:src="@{/static/lib/layui/layui.js}" charset="utf-8"></script>
+    <script th:src="@{/static/js/common.js}" charset="utf-8"></script>
+
+    <!--//js -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<link type="text/css" rel="stylesheet" th:href="@{/static/css/slider.css}">
+<script type="text/javascript" th:src="@{/static/js/swiper.min.js}"></script>
+
+<script th:src="@{/static/js/user/index.js}" charset="utf-8"></script>
+<body>
+
+<div class="container">
+    <section class="pc-banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper" id="swiper-wrapper">
+                <!--<div class="swiper-slide">-->
+                    <!--<a href="#">-->
+                        <!--<img src="http://localhost:8080/news/1/news/9aad850e2c9581eee9e442c2f159baa2fe442f45.jpg">-->
+                    <!--</a>-->
+                    <!--<div class="layer-mask"></div>-->
+                <!--</div>-->
+
+            </div>
+            <div class="button">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- banner-bottom -->
+<div class="banner-bottom" style="padding: 0px;">
+    <div class="container">
+        <div class="move-text">
+            <div class="breaking_news">
+                <h2>Breaking News</h2>
+            </div>
+            <div class="marquee" id="breaking-news-wrap">
+
+            </div>
+            <div class="clearfix"></div>
+            <script type="text/javascript" th:src="@{/static/js/jquery.marquee.js}"></script>
+
+        </div>
+
+        <!-- video-grids -->
+        <div class="video-grids">
+            <!-- news-and-events -->
+            <div class="news">
+                <div class="news-grids">
+                    <div class="col-md-8 news-grid-left">
+                        <h3>latest news & events</h3>
+                        <ul id="latest-news">
+                            <!-- js填充 -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- //news-and-events -->
+            <div class="col-md-4 video-grids-right">
+                <div class="sap_tabs">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                        <ul class="resp-tabs-list">
+                            <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>most shared</span></li>
+                            <li class="resp-tab-item grid2" aria-controls="tab_item-1" role="tab"><span>most read</span></li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="resp-tabs-container">
+                            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/10.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#">Blogger</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/11.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="green">international</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/12.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="orange">general</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/13.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="orange1">business</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/14.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="orange2">world</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </div>
+                            <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/15.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#">Blogger</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/14.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="orange1">business</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/14.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="orange2">world</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/14.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="green">international</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                                <div class="facts">
+                                    <div class="tab_list">
+                                        <img th:src="@{/staticimages/14.jpg}" alt=" " class="img-responsive" />
+                                    </div>
+                                    <div class="tab_list1">
+                                        <ul>
+                                            <li><a href="#" class="orange">general</a> <label>|</label></li>
+                                            <li>30.03.2016</li>
+                                        </ul>
+                                        <p><a href="#">Nam libero tempore, cum soluta nobis.</a></p>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <script th:src="@{/static/js/easyResponsiveTabs.js}" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#horizontalTab').easyResponsiveTabs({
+                                    type: 'default', //Types: default, vertical, accordion
+                                    width: 'auto', //auto or any width like 600px
+                                    fit: true   // 100% fit in a container
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <!-- //video-grids -->
+        <div id="demo7"></div>
+    </div>
+
+</div>
+<!-- //banner-bottom -->
+
+<!-- for bootstrap working -->
+<script th:src="@{/static/js/bootstrap.js}"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>
