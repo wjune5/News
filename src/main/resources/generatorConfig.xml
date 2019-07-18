@@ -13,7 +13,7 @@
         <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
                         connectionURL="jdbc:sqlserver://localhost:1433;DatabaseName=news"
                         userId="sa"
-                        password="1785qweasd">
+                        password="xxx">
 						<property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
