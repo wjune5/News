@@ -8,7 +8,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;DatabaseName=news
     username: sa
-    password: 1785qweasd
+    password: xxxx
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     ###################以下为druid增加的配置###########################
     type: com.alibaba.druid.pool.DruidDataSource
